@@ -1,0 +1,161 @@
+.grid {
+  display: flex;
+  height: 100vh;
+}
+
+.infoSection {
+  width: 25vw;
+  transition: 0.3s ease-in-out;
+  height: 100vh;
+  overflow: scroll;
+}
+
+.infoSection::-webkit-scrollbar {
+  width: 0;
+}
+
+.Map {
+  transition: 0.3s ease-in-out;
+  width: 75vw;
+}
+
+
+.options {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  height: 5rem;
+}
+
+.options button {
+  font-size: 1.1rem;
+  font-weight: 600;
+  outline: none;
+  border: none;
+}
+
+/* Form */
+.grid form {
+  display: flex;
+  gap: 2rem;
+  height: 4rem;
+}
+
+.grid form label {
+  height: 100%;
+}
+
+.grid form input {
+  outline: none;
+  padding: 8px;
+  border: none;
+  border-bottom: 1px solid gray;
+}
+
+.button {
+  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button button {
+  padding: 0.5rem 1.3rem;
+  outline: none;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-right: -30px;
+}
+
+.grid form {
+  position: absolute;
+  height: 7rem;
+  z-index: 99999999;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  top: 180px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 4rem 3rem 1rem;
+  border-radius: 10px;
+}
+
+.grid form label {
+  display: flex;
+  justify-content: center;
+  text-align: left;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media screen and (max-width: 1000px) {
+.infoSection {
+  width: 30vw;
+  height: 100vh;
+}
+
+.Map {
+  width: 70vw;
+}
+
+}
+
+@media screen and (max-width: 900px){
+.infoSection {
+  width: 35vw;
+  height: 100vh;
+}
+
+.Map {
+  width: 65vw;
+}
+
+}
+
+@media screen and (max-width:850px){
+  .grid {
+    flex-direction: column;
+    height: 200vh;
+  }
+
+  .infoSection {
+    width: 100vw;
+    height: 150vh;
+  }
+  .Map {
+    width: 100vw;
+    height: 150vh;
+  }
+
+  .grid form {
+  top: calc(100vh + 80px);
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 4rem 3rem 1rem;
+  border-radius: 10px;
+  transform:  translate(-50%, -50%);
+}
+
+.grid form input {
+  width: 100px;
+}
+
+.button {
+  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button button {
+  padding: 0.3rem 1.1rem;
+  outline: none;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+}

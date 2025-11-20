@@ -1,0 +1,89 @@
+.section {
+    width: 100%;
+    margin: 0rem auto;
+}
+
+.title {
+    text-align: center;
+    font-size: 3rem;
+}
+
+.section form {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    margin: 4rem auto 2rem auto;
+}
+
+.section label {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 0.5rem;
+}
+
+.section label input {
+    width: 700px;
+    height: 50px;
+    outline: none;
+    border-radius: 25px;
+    padding: 7px;
+    font-size: 1.2rem;
+}
+
+.section label select {
+    height: 45px;
+    font-weight: 800;
+}
+
+.itemCard {
+    width: 100%;
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 1px 1px 5px 5px rgb(241, 241, 241);
+    padding: 1rem 2rem;
+}
+
+.itemCard > div {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+}
+
+
+.itemCard img {
+    width: 50px;
+    width: 50px;
+    object-fit: contain;
+}
+
+.itemsGrid {
+    display: grid;
+    margin-top: 3rem;
+    gap: 3rem;
+    width: 90%;
+    margin: 3rem auto;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.itemCard h3 {
+      min-width: 0;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+.section main {
+    background: url("/prices.jpg") center/cover;
+    height: 400px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

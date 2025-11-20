@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -28,6 +29,9 @@ body {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
 a {
@@ -35,8 +39,17 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+#navbar {
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem 0;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 0 8px 8px rgba(0, 221, 255, 0.564);
+  z-index: 900;
+}
+
+#navbar ul {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
 }
