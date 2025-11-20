@@ -88,7 +88,7 @@ function UserMarker({ userPos }) {
       title="You"
     >
       <img
-        src="https://cdn-icons-png.flaticon.com/128/684/684908.png"
+        src="/taxi.png"
         style={{ width: 40, height: 40 }}
         alt="You"
       />
@@ -164,7 +164,7 @@ const TaxiMarker = ({ taxiData, openInfoWindowId, setOpenInfoWindowId, setFullRo
   return (
     <>
       <AdvancedMarker ref={markerRef} position={taxiData.road[0]} onClick={handleMarkerClick} title={`Taxi ID: ${taxiData.id} - ${taxiData.names[0]}`}>
-        <img src="https://cdn-icons-png.flaticon.com/128/2316/2316276.png" style={{ width: 45, height: 45, cursor: "pointer" }} alt="Taxi" />
+        <img src="/taxi.png" style={{ width: 45, height: 45, cursor: "pointer" }} alt="Taxi" />
       </AdvancedMarker>
 
       {isOpen && (
@@ -311,6 +311,17 @@ export default function Home() {
 
   useEffect(() => {
     if (originMarker && destinationMarker && window.google && window.google.maps) {
+      // FIX START: Ensure coordinates are valid numbers before calling route
+      if (
+        typeof originMarker.lat !== 'number' || 
+        typeof originMarker.lng !== 'number' ||
+        typeof destinationMarker.lat !== 'number' ||
+        typeof destinationMarker.lng !== 'number'
+      ) {
+        return;
+      }
+      // FIX END
+
       const service = new window.google.maps.DirectionsService();
       service.route(
         { origin: originMarker, destination: destinationMarker, travelMode: window.google.maps.TravelMode.DRIVING },
@@ -318,6 +329,10 @@ export default function Home() {
           if (status === "OK") {
             const path = result.routes[0].overview_path.map((p) => ({ lat: p.lat(), lng: p.lng() }));
             setFullRoad(path);
+          } else if (status === "ZERO_RESULTS") {
+             // FIX: Handle ZERO_RESULTS gracefully
+             console.warn("No driving route found between these points.");
+             setFullRoad([]);
           } else {
             console.error("Directions failed:", status);
             setFullRoad([]);

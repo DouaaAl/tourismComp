@@ -94,7 +94,7 @@ const Page = () => {
                 src={item.imageLink || placeholderImage}
                 alt={item.piece}
               />
-              <h2>{item.piece}</h2>
+              <h3>{item.piece}</h3>
               <h3>{item.unit}</h3>
               <h3>{item.price} DH</h3>
             </div>

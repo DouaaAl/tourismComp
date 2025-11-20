@@ -46,10 +46,52 @@ a {
   background-color: rgb(255, 255, 255);
   box-shadow: 0 0 8px 8px rgba(0, 221, 255, 0.564);
   z-index: 900;
+  align-items: center;
 }
 
 #navbar ul {
   display: flex;
   justify-content: space-between;
   gap: 3rem;
+}
+
+#navbar ul a {
+  font-weight: 200;
+  color: gray;
+  text-transform: uppercase;
+}
+.logo {
+  height: 80px;
+}
+
+
+
+.footer {
+    text-align: center;
+    background-color: rgb(192, 191, 191);
+    color: white;
+    padding: 5px;
+}
+@media screen and (max-width: 600px){
+  #navbar ul {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+#navbar {
+  flex-direction: column;
+  gap: 3rem;
+}
+
+#navbar ul a {
+  font-weight: 200;
+  color: gray;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+.logo {
+  height: 60px;
+}
+
 }

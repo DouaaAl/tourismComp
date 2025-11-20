@@ -22,13 +22,22 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <nav id="navbar">
-          <Link href="/">Logo</Link>
+          <Link href="/">
+            <img className="logo" src="/logo.png"></img>
+          </Link>
           <ul>
             <Link href="/prices">Prices</Link>
             <Link href="/map">Map Information</Link>
+            <Link href="/guide">Guide</Link>
           </ul>
         </nav>
         {children}
+        <footer className="footer">
+  <p>
+    © 2025 TravelSafe — Smart tools for safer journeys.  
+    Designed to guide, protect, and empower every traveler.
+  </p>
+</footer>
       </body>
     </html>
   );

@@ -15,6 +15,8 @@ display: flex;
   height: 100vh;
   flex-direction: column;
   min-width: 0;
+  width: 90%;
+  margin: 0 auto;
   position: relative;
   justify-content: center;
   align-items: center;
@@ -114,9 +116,164 @@ display: flex;
     opacity: 0.7;
 }
 
-.footer {
-    text-align: center;
-    background-color: rgb(192, 191, 191);
-    color: white;
-    padding: 5px;
+
+@media screen and (max-width: 1270px) {
+    
+    .embla__slide h1 {
+        font-size: 4rem;
+    }
+/************ ABOUT US *************/
+.aboutUs {
+    width: 90%;
+    grid-template-columns: repeat(2, 48%);
+}
+
+.aboutUs img {
+    height: 392px;
+    width: 450px;
+}
+
+/*********** Services **********/
+
+
+.services .title, .aboutUs h1 {
+    font-size: 1.9rem;
+}
+
+
+
+
+
+}
+
+
+@media screen and (max-width: 1070px) {
+    
+    .embla__slide h1 {
+        font-size: 3.2rem;
+    }
+
+    /************ ABOUT US *************/
+.aboutUs {
+    width: 90%;
+    grid-template-columns: repeat(2, 47%);
+}
+
+.aboutUs img {
+    height: 380px;
+    width: 370px;
+}
+
+/*********** Services **********/
+
+
+.services .title, .aboutUs h1 {
+    font-size: 1.6rem;
+}
+
+
+.services .serviceGrid {
+    grid-template-columns: repeat(3, 23%);
+    gap: 2rem;
+}
+
+.services .serviceGrid div {
+    width: 280px;
+    height: 280px;
+}
+
+.services .serviceGrid img {
+    width: 170px;
+    height: 170px;
+}
+
+.services .serviceGrid p {
+    font-size: 1.1rem;
+}
+
+
+}
+
+
+@media screen and (max-width: 850px) {
+    
+    .embla__slide h1 {
+        font-size: 2.2rem;
+    }
+
+    .embla__slide p {
+        font-size: 1rem;
+    }
+
+    
+    /************ ABOUT US *************/
+        .aboutUs {
+            width: 90%;
+            grid-template-columns: 1fr;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .aboutUs img {
+            display: flex;
+            height: 380px;
+            width: 370px;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+        }
+
+        /*********** Services **********/
+
+
+    .services .title, .aboutUs h1 {
+        font-size: 1.4rem;
+    }
+
+    
+.services .serviceGrid {
+    grid-template-columns: repeat(2, 50%);
+    gap: 2rem;
+}
+
+    .services .serviceGrid div {
+        width: 250px;
+        height: 250px;
+    }
+
+
+}
+
+
+@media screen and (max-width: 650px) {
+    
+    .embla__slide h1 {
+        font-size: 1.8rem;
+    }
+
+    .embla__slide p {
+        font-size: 0.9rem;
+    }
+
+    /*********** Services **********/
+
+
+.services .title, .aboutUs h1 {
+    font-size: 1.2rem;
+}
+
+
+   
+.services .serviceGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+    .services .serviceGrid div {
+        width: 250px;
+        height: 250px;
+        margin: 0 auto;
+    }
 }

@@ -130,12 +130,8 @@
   }
 
   .grid form {
-  top: calc(100vh + 80px);
-  background-color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem 4rem 3rem 1rem;
+  top: calc(110vh + 140px);
+  padding: 1rem 2rem 1.5rem 0.5rem;
   border-radius: 10px;
   transform:  translate(-50%, -50%);
 }
@@ -144,18 +140,17 @@
   width: 100px;
 }
 
-.button {
-  display: block;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
-.button button {
-  padding: 0.3rem 1.1rem;
-  outline: none;
-  font-size: 1.1rem;
-  font-weight: 700;
-  cursor: pointer;
+@media screen and (max-width: 670px) {
+.grid form {
+  top: calc(120vh + 140px);
+  padding: 1rem 2rem 1.5rem 0.5rem;
+  border-radius: 10px;
+  transform:  translate(-50%, -50%);
+}
+
+.grid form input {
+  width: 100px;
 }
 }

@@ -45,7 +45,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
     box-shadow: 1px 1px 5px 5px rgb(241, 241, 241);
     padding: 1rem 2rem;
 }
@@ -53,6 +52,7 @@
 .itemCard > div {
     width: 100%;
     display: grid;
+    gap: 1.5rem;
     grid-template-columns: repeat(4, 25%);
 }
 
@@ -73,9 +73,10 @@
 }
 
 .itemCard h3 {
-      min-width: 0;
+    min-width: 0;
   white-space: normal;
   overflow-wrap: break-word;
+  font-size: 1rem;
 }
 
 .section main {
@@ -86,4 +87,117 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+@media screen and (max-width: 1000px){
+
+.title {
+    font-size: 2.7rem;
+}
+
+.section form {
+    gap: 3rem;
+    margin: 3rem auto 2rem auto;
+}
+
+
+.section label input {
+    width: 600px;
+    height: 50px;
+    font-size: 1.2rem;
+}
+
+/*********** Prices **************/
+
+.itemCard {
+    width: 100%;
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 1px 5px 5px rgb(241, 241, 241);
+    padding: 1rem 2rem;
+}
+
+.itemCard > div {
+    width: 100%;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(4, 25%);
+}
+
+
+.itemCard img {
+    width: 50px;
+    width: 50px;
+    object-fit: contain;
+}
+
+.itemsGrid {
+    display: grid;
+    margin-top: 3rem;
+    gap: 3rem;
+    width: 90%;
+    margin: 3rem auto;
+    grid-template-columns: 1fr;
+}
+
+
+
+}
+
+@media screen and (max-width: 850px){
+
+.title {
+    font-size: 2.4rem;
+}
+
+.section form {
+    gap: 3rem;
+    margin: 3rem auto 2rem auto;
+}
+
+
+.section label input {
+    width: 400px;
+    height: 45px;
+    font-size: 1rem;
+}
+
+.section label select {
+    height: 45px;
+}
+
+
+}
+
+@media screen and (max-width: 850px){
+
+
+.section form {
+    gap: 1rem;
+    flex-direction: column;
+}
+
+
+.section label input {
+    width: 340px;
+    height: 45px;
+    font-size: 1rem;
+}
+
+.section label select {
+    height: 45px;
+}
+
+.itemCard > div {
+    width: 100%;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(4, 20%);
+}
+
+
+
 }

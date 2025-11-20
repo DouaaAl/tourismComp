@@ -12,6 +12,7 @@
     "@react-google-maps/api": "^2.20.7",
     "@vis.gl/react-google-maps": "^1.7.1",
     "embla-carousel-react": "^8.6.0",
+    "lucide-react": "^0.554.0",
     "next": "16.0.3",
     "papaparse": "^5.5.3",
     "react": "19.2.0",

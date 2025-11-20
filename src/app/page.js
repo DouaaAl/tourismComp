@@ -115,12 +115,6 @@ export default function Home() {
   </article>
 </section>
 
-<footer className={styles.footer}>
-  <p>
-    © 2025 TravelSafe — Smart tools for safer journeys.  
-    Designed to guide, protect, and empower every traveler.
-  </p>
-</footer>
     </>
 
   );
