@@ -226,25 +226,28 @@ export default function Home() {
   const [center, setCenter] = useState({ lat: 34.256, lng: -6.554 });
   const [userPos, setUserPos] = useState(null);
   const [fullRoad, setFullRoad] = useState([]);
+  // Add state for the estimated price
+  const [estimatedPrice, setEstimatedPrice] = useState(null);
+
   const [originMarker, setOriginMarker] = useState(null);
   const [destinationMarker, setDestinationMarker] = useState(null);
 
   // ⭐️ Dynamically loaded Google Sheets data
-  const [googleSheetArrays, setGoogleSheetArray] = useState(null); 
-  const [riskZones, setRiskZones] = useState([]); 
+  const [googleSheetArrays, setGoogleSheetArray] = useState(null);
+  const [riskZones, setRiskZones] = useState([]);
 
   const originRef = useRef(null);
   const destinationRef = useRef(null);
 
   const options = { mapId: "18b5d155a199e5b63d22784f" };
 
-  const getArrays = async() => {
+  const getArrays = async () => {
     let data = await getAllSheets();
     setGoogleSheetArray(data);
-    
+
     if (data && data.risk) {
       const newRiskZones = data.risk.map(item => ({
-        lat: parseFloat(item.Latitude), 
+        lat: parseFloat(item.Latitude),
         lng: parseFloat(item.Longitude),
         name: item.Name,
       }));
@@ -263,7 +266,7 @@ export default function Home() {
         const coords = { lat: pos.coords.latitude, lng: pos.coords.longitude };
         setUserPos(coords);
       },
-      (err) => {},
+      (err) => { },
       { enableHighAccuracy: true, maximumAge: 10000, timeout: 10000 }
     );
 
@@ -311,31 +314,57 @@ export default function Home() {
 
   useEffect(() => {
     if (originMarker && destinationMarker && window.google && window.google.maps) {
-      // FIX START: Ensure coordinates are valid numbers before calling route
+      // Ensure coordinates are valid numbers before calling route
       if (
-        typeof originMarker.lat !== 'number' || 
+        typeof originMarker.lat !== 'number' ||
         typeof originMarker.lng !== 'number' ||
         typeof destinationMarker.lat !== 'number' ||
         typeof destinationMarker.lng !== 'number'
       ) {
         return;
       }
-      // FIX END
 
       const service = new window.google.maps.DirectionsService();
       service.route(
         { origin: originMarker, destination: destinationMarker, travelMode: window.google.maps.TravelMode.DRIVING },
         (result, status) => {
           if (status === "OK") {
-            const path = result.routes[0].overview_path.map((p) => ({ lat: p.lat(), lng: p.lng() }));
+            const route = result.routes[0];
+            const path = route.overview_path.map((p) => ({ lat: p.lat(), lng: p.lng() }));
             setFullRoad(path);
+
+            // --- START: Calculate Estimated Price ---
+            if (route.legs && route.legs.length > 0) {
+              const distanceInMeters = route.legs[0].distance.value;
+              const distanceInKm = distanceInMeters / 1000;
+
+              // 2025 Petit Taxi Estimation Logic (Morocco)
+              // Base fare (Counter start): 5 DH
+              // Avg cost per km in city traffic: ~5.5 DH
+              // Minimum fare: 10 DH
+              const baseFare = 5.0;
+              const ratePerKm = 5.5;
+
+              let price = baseFare + (distanceInKm * ratePerKm);
+
+              // Round up to nearest Dirham
+              price = Math.ceil(price);
+
+              // Enforce minimum fare
+              if (price < 10) price = 10;
+
+              setEstimatedPrice(price);
+            }
+            // --- END: Calculate Estimated Price ---
+
           } else if (status === "ZERO_RESULTS") {
-             // FIX: Handle ZERO_RESULTS gracefully
-             console.warn("No driving route found between these points.");
-             setFullRoad([]);
+            console.warn("No driving route found between these points.");
+            setFullRoad([]);
+            setEstimatedPrice(null);
           } else {
             console.error("Directions failed:", status);
             setFullRoad([]);
+            setEstimatedPrice(null);
           }
         }
       );
@@ -362,6 +391,26 @@ export default function Home() {
             Destination:
             <input ref={destinationRef} type="text" placeholder="Enter destination" />
           </label>
+
+          {/* Display the Estimated Price inside the form or right below it */}
+          {estimatedPrice !== null && (
+            <div style={{
+              marginTop: "15px",
+              padding: "12px",
+              backgroundColor: "#f0f9ff",
+              border: "1px solid #007aff",
+              borderRadius: "8px",
+              color: "#0f172a",
+              textAlign: "center"
+            }}>
+              <span style={{ display: "block", fontSize: "0.9rem", color: "#64748b" }}>
+                Estimated Petit Taxi Fare (Meter)
+              </span>
+              <span style={{ fontSize: "1.5rem", fontWeight: "bold", color: "#007aff" }}>
+                {estimatedPrice} DH
+              </span>
+            </div>
+          )}
         </form>
 
         <section className={styles.infoSection}>
